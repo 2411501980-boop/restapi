@@ -1,0 +1,37 @@
+========================================================
+TUGAS WEEK 5 - BUILDING BASIC REST API WITH SPRING BOOT
+Nama  : (isi nama Anda)
+NIM   : (isi NIM Anda)
+Kelas : (isi kelas)
+========================================================
+
+DAFTAR FILE CODINGAN YANG DIKUMPULKAN (folder code/):
+--------------------------------------------------------
+1. ProductController.java      <- BARU (UTAMA): REST API CRUD + endpoint
+                                  pencarian Mini Challenge
+                                  GET/POST /api/products
+                                  GET/PUT/DELETE /api/products/{id}
+                                  GET /api/products/search?keyword=...
+2. ProductRepository.java      <- DIPERBARUI: tambah updateProduct(),
+                                  deleteById(), findByNameContains()
+                                  (logic filter Mini Challenge)
+3. ProductService.java         <- DIPERBARUI: tambah updateProduct(),
+                                  deleteProduct(), searchProducts()
+4. Product.java                <- Model (Week 4)
+5. ProductNotFoundException.java <- Exception (Week 4)
+6. ProductCatalogApplication.java <- Main + CommandLineRunner (Week 4)
+
+HASIL PENGUJIAN:
+--------------------------------------------------------
+- hasil_test_api.txt = log hasil test seluruh endpoint
+  (GET, GET by ID, 404, POST 201, PUT, DELETE,
+   dan Mini Challenge search termasuk case-insensitive)
+
+MINI CHALLENGE:
+--------------------------------------------------------
+Endpoint : GET /api/products/search?keyword=keyboard
+Anotasi  : @RequestParam("keyword") String keyword
+Filter   : product.getName().toLowerCase()
+              .contains(keyword.toLowerCase())
+Hasil    : LULUS - mengembalikan daftar produk yang
+           mengandung kata kunci, case-insensitive.

@@ -1,0 +1,48 @@
+﻿======================================================
+HASIL PENGUJIAN REST API - Week 5 Mini Challenge
+Project : product-catalog (Spring Boot)
+Endpoint: http://localhost:8080/api/products
+Tanggal : 
+18-10-2026 12:43
+Tester  : Postman / HTTP Client
+======================================================
+
+=== TEST 1: GET ALL PRODUCTS - GET /api/products ===
+[200] GET http://localhost:8080/api/products
+[{"id":"PRD-01","name":"Keyboard Mechanical","price":450000.0},{"id":"PRD-02","name":"Mouse Wireless Silent","price":175000.0},{"id":"PRD-03","name":"Monitor Gaming 24 Inch","price":2100000.0}]
+
+=== TEST 2: GET BY ID SUKSES - GET /api/products/PRD-01 ===
+[200] GET http://localhost:8080/api/products/PRD-01
+{"id":"PRD-01","name":"Keyboard Mechanical","price":450000.0}
+
+=== TEST 3: GET BY ID TIDAK ADA (404) - GET /api/products/PRD-99 ===
+[404] GET http://localhost:8080/api/products/PRD-99
+
+
+=== TEST 4: CREATE BARU (201) - POST /api/products ===
+[201] POST http://localhost:8080/api/products
+Produk 'Headset Gaming' berhasil ditambahkan!
+
+=== TEST 5: UPDATE (200) - PUT /api/products/PRD-01 ===
+[200] PUT http://localhost:8080/api/products/PRD-01
+{"id":"PRD-01","name":"Keyboard Mechanical RGB","price":550000.0}
+
+=== TEST 6: DELETE (200) - DELETE /api/products/PRD-02 ===
+[200] DELETE http://localhost:8080/api/products/PRD-02
+Produk dengan ID 'PRD-02' berhasil dihapus!
+
+=== TEST 7: MINI CHALLENGE - GET /api/products/search?keyword=keyboard ===
+[200] GET http://localhost:8080/api/products/search?keyword=keyboard
+[{"id":"PRD-01","name":"Keyboard Mechanical RGB","price":550000.0}]
+
+=== TEST 8: MINI CHALLENGE CASE-INSENSITIVE - GET /api/products/search?keyword=MOUSE ===
+[200] GET http://localhost:8080/api/products/search?keyword=MOUSE
+[]
+
+=== TEST 9: SEARCH TIDAK ADA HASIL - GET /api/products/search?keyword=laptop ===
+[200] GET http://localhost:8080/api/products/search?keyword=laptop
+[]
+
+=== TEST 10: VERIFIKASI AKHIR - GET /api/products (setelah CRUD) ===
+[200] GET http://localhost:8080/api/products
+[{"id":"PRD-01","name":"Keyboard Mechanical RGB","price":550000.0},{"id":"PRD-03","name":"Monitor Gaming 24 Inch","price":2100000.0},{"id":"PRD-04","name":"Headset Gaming","price":1000000.0}]
